@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import WeatherIcon from 'react-icons-weather';
+import moment from "moment";
+import App from '../App';
 
 const ForecastSummary = (props) => {
     const {
     date,
     temperature,
-    description,
-    handleForecastSelect } = props;
+    description, } = props;
     
     return (
       <h2>
         <div className="date" data-testid="date-id">
-         <span>{date}</span>
+         <span>{moment(props.date).format('ddd Do MMM')}</span>
         </div>
         <div className="temperature" data-testid="temperature-id">
-         <span>{temperature}</span>
+         <span>{temperature}&deg;c</span>
         </div>
         <div className="description" data-testid="description-id">
         <span>{description}</span>
@@ -23,9 +24,7 @@ const ForecastSummary = (props) => {
         <div className="icon" data-testid="icon-id">
         <span>  <WeatherIcon name="owm" iconId={props.icon} /> </span>
         </div>
-        <button value={date} onClick={handleForecastSelect}>
-          More Details
-        </button>
+        <button onClick={() => props.onSelect(props.date)}>More details</button>
       </h2>
     );
   };

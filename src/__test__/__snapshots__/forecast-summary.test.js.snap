@@ -8,7 +8,7 @@ exports[`ForecastSummary renders correctly 1`] = `
       data-testid="date-id"
     >
       <span>
-        mockDate
+        Tue 1st May
       </span>
     </div>
     <div
@@ -41,7 +41,7 @@ exports[`ForecastSummary renders correctly 1`] = `
       </span>
     </div>
     <button
-      value="mockDate"
+      value="1525132800000"
     >
       More Details
     </button>
