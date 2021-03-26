@@ -3,37 +3,58 @@ import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
 import getForecast from "./getForecast";
+import SearchForm from './searchForm';
 
 import '../styles/app.css';
 
 
-const App = (props) => {
+const App = () => {
     const [location, setLocation] = useState({city: "", country: ""});
     const [selectedDate, setSelectedDate] = useState(0);
-    const [forecasts, setForecasts] = useState([])
+    const [forecasts, setForecasts] = useState([]);
+    const [searchText, setSearchText] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+      getForecast(searchText, setSelectedDate, setForecasts, setLocation, setErrorMessage);
+    }, []);
 
     const selectedForecast = forecasts.find(forecast => forecast.date === selectedDate);
 
     const handleForecastSelect = (date) => {
         setSelectedDate(date);
+
     };
 
+    const handleCitySearch = () => {
+        getForecast(searchText, setSelectedDate, setForecasts, setLocation, setErrorMessage);
+        setSearchText("");
+        };
 
-  useEffect(() => {
-    getForecast(setSelectedDate, setForecasts, setLocation);
-  }, []);
 
 return (
     <div className="forecast">
+
  < LocationDetails
  city = {location.city}
- country = {location.country}/>
-
- <ForecastSummaries
- forecasts = {forecasts}
- onForecastSelect = {handleForecastSelect}/>
-
-{selectedForecast && <ForecastDetails forecast = {selectedForecast}/>}
+ country = {location.country}
+ errorMessage = {errorMessage}
+ />
+      <SearchForm
+       searchText={searchText}
+       setSearchText={setSearchText}
+       onSubmit={handleCitySearch}
+      />
+ 
+ {!errorMessage && (
+        <>
+          {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
+          <ForecastSummaries
+            forecasts={forecasts}
+            onForecastSelect={handleForecastSelect}
+          />
+        </>
+      )}
 
  </div>
 );
