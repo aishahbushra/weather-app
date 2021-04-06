@@ -1,5 +1,11 @@
+body {
+  height: 100vh;
+  background-image:url(../components/weather\ background.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .forecast {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0 20px;
-    color: blue;
-  };
+    font-family: Roboto, sans-serif;
+    margin: 0 0px;
+};

@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import WeatherIcon from 'react-icons-weather';
 import moment from "moment";
+import {SingleForecast, DetailsButton} from "../styles/forecast-styles";
+
 
 const ForecastSummary = (props) => {
     const {
@@ -10,7 +12,8 @@ const ForecastSummary = (props) => {
     description, } = props;
     
     return (
-      <h2>
+      <SingleForecast>
+        
         <div className="date" data-testid="date-id">
          <span>{moment(props.date).format('ddd Do MMM')}</span>
         </div>
@@ -23,8 +26,9 @@ const ForecastSummary = (props) => {
         <div className="icon" data-testid="icon-id">
         <span>  <WeatherIcon name="owm" iconId={props.icon} /> </span>
         </div>
-        <button onClick={() => props.onSelect(props.date)}>More details</button>
-      </h2>
+        <DetailsButton onClick={() => props.onSelect(props.date)}>More details</DetailsButton>
+    
+      </SingleForecast>
     );
   };
 

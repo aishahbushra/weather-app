@@ -1,11 +1,12 @@
 import React from 'react';
 import ForecastSummary from './forecast-summary';
 import PropTypes from "prop-types";
+import {AllForecasts} from "../styles/forecast-styles";
 
-import '../styles/forecast-summaries.css';
+import '../styles/forecast-styles.js';
 
 const ForecastSummaries = props => (
-    <div className="forecast-summaries">
+    <AllForecasts>
         {
             props.forecasts.map(forecast => (
                 <ForecastSummary
@@ -18,7 +19,7 @@ const ForecastSummaries = props => (
                 />
             ))
         }
-    </div>
+    </AllForecasts>
 );
 
 ForecastSummaries.propTypes = {

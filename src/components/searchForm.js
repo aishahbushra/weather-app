@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { Input, SearchContainer, Button } from "../styles/search-form-style";
 
 const SearchForm = ({searchText, setSearchText, onSubmit}) => {
     const handleInputChange = (event) => setSearchText(event.target.value);
   
     return (
-<div className="search-form">
-      <input type="text" value={searchText} onChange={handleInputChange}/>
-      <button type="submit" onClick={onSubmit}>
+<SearchContainer>
+  <div>
+      <Input type="text" value={searchText} onChange={handleInputChange} placeholder="   Type in city.."/>
+      </div>
+      <div>
+      <Button type="submit" onClick={onSubmit}>
         Search
-      </button>
-    </div>
+      </Button>
+      </div>
+    </SearchContainer>
     );
   };
 

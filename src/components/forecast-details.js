@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Moment from "moment";
 import WeatherIcon from "react-icons-weather";
+import {DetailContainer, DetailInfo} from "../styles/forecast-details-style";
 
 const ForecastDetails = ({ forecast }) => {
   const { 
@@ -12,7 +13,9 @@ const ForecastDetails = ({ forecast }) => {
     humidity } = forecast;
 
   return (
-    <>
+    <DetailContainer>
+      <DetailInfo>
+    <h3>Details:</h3>
       <div className="main-date">{Moment(date).format("ddd Do MMM")}</div>
       <br />
       <div className="main-icon" data-testid="test-icon">
@@ -28,7 +31,8 @@ const ForecastDetails = ({ forecast }) => {
       <div className="wind-speed">
         Wind: {wind.speed}mph {<i className={"windy"} />}
       </div>
-    </>
+      </DetailInfo>
+    </DetailContainer>
   );
 };
 

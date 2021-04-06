@@ -1,12 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {LineOne, LineTwo} from "../styles/location-details-style";
 
 const LocationDetails = (props) => {
     const { city, country, errorMessage } = props;
     return errorMessage ? (
-      <h1>{errorMessage}</h1>
+      <h2>{errorMessage}</h2>
     ) : (
-      <h1 className="location-details">{`${city}, ${country}`}</h1>
+        <>
+      <LineOne className="location-details">{`WEATHER IN ${city.toUpperCase()}`}</LineOne>
+      <LineTwo className="location-details-two">THIS WEEK </LineTwo>
+      </>
     );
   };
   
