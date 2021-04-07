@@ -34,7 +34,7 @@ import styled from "styled-components";
    border-color: rgba(206, 121, 107, 1);
    background: rgba(206, 121, 107, 1);
    margin-top: 10px;
-   font-size: 15px;
+   font-size: 10px;
    border-radius: 10px;
    height: 30px;
    width: 100px;
